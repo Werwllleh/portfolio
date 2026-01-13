@@ -18,13 +18,15 @@ $colorPrimary: #004c9d;
 $colorPrimaryDark: #182232;
 $colorSecondary: #f8f8f8;
 
-$background: #ffffff;
-$text: #182232;
-$text-secondary: #212937;
+@mixin theme-light {
+  background: #ffffff;
+  color: #182232;
+  $text-secondary: #212937;
+}
 
-@media (prefers-color-scheme: dark) {
-  $background: #182232;
-  $text: #ffffff;
+@mixin theme-dark {
+  background: #182232;
+  color: #ffffff;
   $text-secondary: #eaeaea;
 }
 

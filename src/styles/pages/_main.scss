@@ -2,7 +2,7 @@
 @use "../breakpoints";
 
 .page-main {
-  //background-color: variables.$background;
+  background-color: variables.$background;
   display: flex;
   flex-direction: column;
 
@@ -63,7 +63,7 @@
       font-size: 2rem;
       font-weight: 500;
       line-height: 1.55;
-      //color: variables.$text-secondary;
+      color: variables.$text-secondary;
       max-width: 40rem;
     }
   }
@@ -87,13 +87,13 @@
         font-size: 1.6rem;
         text-transform: uppercase;
         font-weight: 700;
-        //color: variables.$text;
+        color: variables.$text;
         padding-block: .5rem;
 
         span {
           height: 2px;
           width: 3rem;
-          //background-color: variables.$text;
+          background-color: variables.$text;
           transition: width variables.$transition;
         }
 
@@ -121,7 +121,7 @@
         svg {
           width: 3rem;
           height: 3rem;
-          //color: variables.$text;
+          color: variables.$text;
         }
       }
     }

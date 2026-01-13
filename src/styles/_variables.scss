@@ -6,6 +6,20 @@ $transition2: .5s ease-in-out;
 $radius5: .5rem;
 $radius20: 2rem;
 
+:root {
+  --background: #ffffff;
+  --text: #182232;
+  --text-secondary: #212937;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #182232;
+    --text: #ffffff;
+    --text-secondary: #eaeaea;
+  }
+}
+
 
 //colors
 $accent: #393f50;
@@ -18,17 +32,9 @@ $colorPrimary: #004c9d;
 $colorPrimaryDark: #182232;
 $colorSecondary: #f8f8f8;
 
-@mixin theme-light {
-  background: #ffffff;
-  color: #182232;
-  $text-secondary: #212937;
-}
-
-@mixin theme-dark {
-  background: #182232;
-  color: #ffffff;
-  $text-secondary: #eaeaea;
-}
+$background: var(--background);
+$text: var(--text);
+$text-secondary: var(--text-secondary);
 
 
 $borderRadius5: .5rem;

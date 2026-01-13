@@ -117,14 +117,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-
-  @include variables.theme-light;
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      @include variables.theme-dark;
-    }
-  }
+  color: variables.$text;
 }
 
 span, p, a, h1, h2, h3, h4, h5, h6 {

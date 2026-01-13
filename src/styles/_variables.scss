@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$ff-main: "Nunito Sans", sans-serif;
+$transition: .3s ease-in-out;
+$transition2: .5s ease-in-out;
+$radius5: .5rem;
+$radius20: 2rem;
+
+
+//colors
+$accent: #393f50;
+$light: rgba(255, 238, 208, 0.4);
+$white: #ffffff;
+$black: #444;
+$grey-light: #eaeaea;
+$grey: #737373;
+$colorPrimary: #004c9d;
+$colorPrimaryDark: #182232;
+$colorSecondary: #f8f8f8;
+
+$background: #ffffff;
+$text: #182232;
+$text-secondary: #212937;
+
+@media (prefers-color-scheme: dark) {
+  $background: #182232;
+  $text: #ffffff;
+  $text-secondary: #eaeaea;
+}
+
+
+$borderRadius5: .5rem;
+$borderRadius10: 1rem;
+$borderRadius12: 1.2rem;
+$borderRadius15: 1.5rem;
+$borderRadius20: 2rem;
+$borderRadius30: 3rem;

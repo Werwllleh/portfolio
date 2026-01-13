@@ -1,0 +1,53 @@
+@use "sass:map";
+
+$breakpoints: (
+        "xs": 480px,
+        "sm": 576px,
+        "md": 768px,
+        "lg": 992px,
+        "ds": 1024px,
+        "xl": 1250px,
+        "xxl": 1440px,
+);
+
+@mixin mobile-min {
+  @media (min-width: map.get($breakpoints, "xs")) {
+    @content;
+  }
+}
+@mixin mobile-normal {
+  @media (min-width: map.get($breakpoints, "sm")) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: map.get($breakpoints, "md")) {
+    @content;
+  }
+}
+@mixin desktop-min {
+  @media (min-width: map.get($breakpoints, "lg")) {
+    @content;
+  }
+}
+@mixin desktop-semi {
+  @media (min-width: map.get($breakpoints, "ds")) {
+    @content;
+  }
+}
+@mixin desktop-normal {
+  @media (min-width: map.get($breakpoints, "xl")) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (min-width: map.get($breakpoints, "xxl")) {
+    @content;
+  }
+}
+
+@mixin breakpoint($bp: 0) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}

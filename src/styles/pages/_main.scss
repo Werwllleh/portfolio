@@ -1,0 +1,99 @@
+@use "../variables";
+@use "../breakpoints";
+
+.page-main {
+  background-color: variables.$background;
+  display: flex;
+  flex-direction: column;
+
+  &__conainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+
+  &__body {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+  }
+
+  &__left {
+    padding-block: 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: sticky;
+  }
+
+  &__right {
+    padding-block: 10rem;
+  }
+
+  &__author {
+
+    &--title {
+      font-weight: 700;
+      letter-spacing: -.025em;
+      font-size: 6rem;
+      line-height: 1;
+    }
+
+    &--post {
+      margin-top: .5rem;
+      font-weight: 600;
+      font-size: 3rem;
+    }
+
+    &--description {
+      margin-top: 1rem;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: variables.$text-secondary;
+      max-width: 40rem;
+    }
+  }
+
+  .menu {
+    &__list {
+
+    }
+
+    &__item {
+      a {
+      }
+    }
+  }
+
+  .socials {
+    margin-top: auto;
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &__item {
+      a {
+
+        svg {
+          width: 3rem;
+          height: 3rem;
+          color: variables.$text;
+        }
+      }
+    }
+  }
+
+}

@@ -5,7 +5,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const COUNT = 10000;
-const RADIUS = 2.5;
+const RADIUS = 6;
+
+
 
 const SpherePoints: FC = () => {
   const pointsRef = useRef<THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial>>(null);

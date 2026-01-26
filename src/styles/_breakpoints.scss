@@ -25,17 +25,17 @@ $breakpoints: (
     @content;
   }
 }
-@mixin desktop-min {
+@mixin semiDesktop {
   @media (min-width: map.get($breakpoints, "lg")) {
     @content;
   }
 }
-@mixin desktop-semi {
+@mixin desktop {
   @media (min-width: map.get($breakpoints, "ds")) {
     @content;
   }
 }
-@mixin desktop-normal {
+@mixin w1250 {
   @media (min-width: map.get($breakpoints, "xl")) {
     @content;
   }

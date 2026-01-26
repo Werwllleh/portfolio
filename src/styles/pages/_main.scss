@@ -16,34 +16,56 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-block: 10vw;
+
+    @include breakpoints.semiDesktop {
+      padding-block: 0;
+    }
   }
 
   &__grid {
     flex: 1;
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 0 4vw;
-    justify-content: space-between;
+    grid-template-columns: 100%;
+    gap: 8vw 0;
+
+    @include breakpoints.tablet {
+      gap: 5vw 0;
+    }
+
+    @include breakpoints.semiDesktop {
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      gap: 0 4vw;
+    }
   }
 
   &__left {
-    max-width: 50rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 3rem;
-    position: sticky;
-    top: 3rem;
-    max-height: calc(100vh - 3rem);
-    padding-block: 8rem 3rem;
+
+
+    @include breakpoints.semiDesktop {
+      position: sticky;
+      top: 3rem;
+      max-height: calc(100vh - 3rem);
+      max-width: 50rem;
+      padding-block: 8rem 3rem;
+    }
 
     &--top {}
     &--bottom {}
   }
 
   &__right {
-    max-width: 70rem;
-    padding-block: 10rem;
+
+
+    @include breakpoints.semiDesktop {
+      max-width: 70rem;
+      padding-block: 10rem;
+    }
 
     section + section {
       margin-top: 4vw;
@@ -79,7 +101,12 @@
 
 
 .menu {
-  margin-top: 10rem;
+  display: none;
+
+  @include breakpoints.semiDesktop {
+    margin-top: 10rem;
+    display: block;
+  }
 
   &__list {
 
@@ -140,9 +167,17 @@
 .description {
 
   p {
-    font-size: 1.15vw;
+    font-size: 3.85vw;
     line-height: 1.6;
     color: variables.$grey;
+
+    @include breakpoints.tablet {
+      font-size: 2vw;
+    }
+
+    @include breakpoints.semiDesktop {
+      font-size: 1.15vw;
+    }
   }
 
   p + p {

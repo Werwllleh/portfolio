@@ -1,4 +1,5 @@
 @use "../variables";
+@use "../breakpoints";
 
 .work-card {
   position: relative;
@@ -23,8 +24,18 @@
 
   &__body {
     display: grid;
-    grid-template-columns: 12rem calc(100% - 17rem);
-    gap: 0 5rem;
+    grid-template-columns: 100%;
+    gap: 3vw 0;
+
+    @include breakpoints.tablet {
+      grid-template-columns: 12rem calc(100% - 17rem);
+      gap: 0 3vw;
+    }
+
+    @include breakpoints.semiDesktop {
+      grid-template-columns: 12rem calc(100% - 17rem);
+      gap: 0 5vw;
+    }
   }
 
   &__period {

@@ -138,11 +138,7 @@ main {
   width: 100%;
   margin: 0 auto;
   max-width: 147rem;
-  padding-inline: 1.5rem;
-
-  @include breakpoints.desktop-min {
-    padding-inline: 3rem;
-  }
+  padding-inline: 1.8vw;
 }
 
 button {

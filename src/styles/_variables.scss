@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-$ff-main: "Nunito Sans", sans-serif;
+$ff-main: "Inter", sans-serif;
 $transition: .3s ease-in-out;
 $transition2: .5s ease-in-out;
 $radius5: .5rem;
 $radius20: 2rem;
 
 :root {
-  --background: #ffffff;
+  --background: #efefef;
+  --background-revers: #182232;
   --text: #182232;
   --text-secondary: #212937;
 }
@@ -15,6 +16,7 @@ $radius20: 2rem;
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #182232;
+    --background-revers: #dcdcdc;
     --text: #ffffff;
     --text-secondary: #eaeaea;
   }
@@ -27,12 +29,13 @@ $light: rgba(255, 238, 208, 0.4);
 $white: #ffffff;
 $black: #444;
 $grey-light: #eaeaea;
-$grey: #737373;
+$grey: #434343;
 $colorPrimary: #004c9d;
 $colorPrimaryDark: #182232;
 $colorSecondary: #f8f8f8;
 
 $background: var(--background);
+$background-revers: var(--background-revers);
 $text: var(--text);
 $text-secondary: var(--text-secondary);
 

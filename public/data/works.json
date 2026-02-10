@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "period": "2016 — 2017",
+    "position": "Frontend",
+    "workplace": { "name": "Work1", "link": "#" },
+    "text": [
+      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+    ],
+    "tags": ["HTML", "CSS", "Javascript", "PHP"]
+  },
+  {
+    "id": 2,
+    "period": "2016 — 2017",
+    "position": "Frontend",
+    "workplace": { "name": "Work2", "link": "#" },
+    "text": [
+      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+    ],
+    "tags": ["HTML", "CSS", "Javascript", "React", "Next.js", "Node.js"]
+  }
+]

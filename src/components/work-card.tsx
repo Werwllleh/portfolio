@@ -1,12 +1,12 @@
 "use client";
-import React, {JSX} from 'react';
+import React from 'react';
 
 interface IWorkCard {
   id: number;
   period: string;
   position: string;
   workplace: { name: string, link: string };
-  text: JSX.Element;
+  text: string[];
   tags: string[];
 }
 
@@ -25,7 +25,9 @@ const WorkCard = ({data}: { data: IWorkCard }) => {
             <p className="work-card__workplace">{data.workplace.name}</p>
           </h5>
           <div className="work-card__text">
-            {data.text}
+            {data.text.map((t: string, i: number) => (
+              <p key={i}>{t}</p>
+            ))}
           </div>
           {data.tags && data.tags.length &&
             <div className="work-card__tags">

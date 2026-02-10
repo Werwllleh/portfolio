@@ -16,7 +16,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-block: 10vw;
+    padding-block: 5rem 10rem;
 
     @include breakpoints.semiDesktop {
       padding-block: 0;
@@ -27,16 +27,16 @@
     flex: 1;
     display: grid;
     grid-template-columns: 100%;
-    gap: 8vw 0;
+    gap: 2rem 0;
 
     @include breakpoints.tablet {
-      gap: 5vw 0;
+      gap: 5rem 0;
     }
 
     @include breakpoints.semiDesktop {
-      grid-template-columns: auto auto;
+      grid-template-columns: auto .85fr;
       justify-content: space-between;
-      gap: 0 4vw;
+      gap: 0 4rem;
     }
   }
 
@@ -61,14 +61,21 @@
 
   &__right {
 
-
     @include breakpoints.semiDesktop {
       max-width: 70rem;
       padding-block: 10rem;
     }
 
     section + section {
-      margin-top: 4vw;
+      margin-top: 3rem;
+
+      @include breakpoints.mobile-normal {
+        margin-top: 5rem;
+      }
+
+      @include breakpoints.tablet {
+        margin-top: 10rem;
+      }
     }
   }
 
@@ -134,8 +141,8 @@
         transition: width variables.$transition;
       }
 
+      &.active,
       &:hover {
-
         span {
           width: 5rem;
         }

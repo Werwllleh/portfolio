@@ -1,0 +1,99 @@
+@use "../variables";
+@use "../breakpoints";
+
+.project-card {
+  position: relative;
+  padding-block: 2rem;
+  padding-inline: 2rem;
+  margin-inline: -1rem;
+  border-radius: variables.$borderRadius15;
+  cursor: pointer;
+  transition: filter variables.$transition, background-color variables.$transition, box-shadow variables.$transition;
+
+  @include breakpoints.tablet {
+    margin-inline: 0;
+  }
+
+  &:hover {
+    background-color: rgba(30, 41, 59, .15);
+    --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, .04)) drop-shadow(0 4px 3px rgba(0, 0, 0, .1));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+    box-shadow: 0 0 15px 0 rgba(57, 63, 80, 0.4);
+
+    .project-card__image {
+      border-color: variables.$white;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 1.5rem 0;
+
+    @include breakpoints.tablet {
+      grid-template-columns: 10rem 1fr;
+      gap: 0 3rem;
+    }
+
+    @include breakpoints.semiDesktop {
+      gap: 0 5rem;
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+    height: 15rem;
+    background-color: #eaeaea;
+    border-radius: variables.$borderRadius10;
+    padding: .5rem;
+    border: 2px solid transparent;
+    transition: border-color variables.$transition;
+
+    @include breakpoints.tablet {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__info {}
+
+  &__title {
+    font-size: 3.2rem;
+    font-weight: 700;
+
+    @include breakpoints.tablet {
+      font-size: 4.2rem;
+    }
+  }
+
+  &__text {
+    margin-top: 0.5rem;
+    color: variables.$text-secondary;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include breakpoints.tablet {
+      max-width: 38rem;
+      margin-top: 1.5rem;
+    }
+
+    p {
+
+    }
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+  }
+}

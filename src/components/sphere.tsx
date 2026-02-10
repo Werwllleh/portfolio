@@ -7,7 +7,25 @@ import * as THREE from 'three';
 const COUNT = 10000;
 const RADIUS = 6;
 
+function createCircleTexture() {
+  const size = 64;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
 
+  const ctx = canvas.getContext('2d')!;
+  ctx.clearRect(0, 0, size, size);
+
+  const r = size / 2;
+  ctx.beginPath();
+  ctx.arc(r, r, r, 0, Math.PI * 2);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}
 
 const SpherePoints: FC = () => {
   const pointsRef = useRef<THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial>>(null);
@@ -93,7 +111,6 @@ const SpherePoints: FC = () => {
         scroll
       );
 
-      // лёгкое дыхание (как в оригинале)
       const wave = Math.sin(time * 2 + x + y + z) * 0.05 * scroll;
 
       pos[i3] = x + wave;
@@ -107,10 +124,13 @@ const SpherePoints: FC = () => {
     pointsRef.current.rotation.x += 0.0005;
   });
 
+  const circleTexture = useMemo(() => createCircleTexture(), []);
+
   // @ts-ignore
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
+        {/*@ts-ignore*/}
         <bufferAttribute
           attach="attributes-position"
           array={initialPositions.slice()}
@@ -121,7 +141,8 @@ const SpherePoints: FC = () => {
       </bufferGeometry>
 
       <pointsMaterial
-        color={0xff4d00}
+        color={0x9ea1ff}
+        map={circleTexture}
         size={0.02}
         transparent
         opacity={0.8}

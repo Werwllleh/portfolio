@@ -32,7 +32,7 @@ const WorkCard = ({data}: { data: IWorkCard }) => {
           {data.tags && data.tags.length &&
             <div className="work-card__tags">
               {data.tags.map((tag, index) => (
-                <span aria-label={tag} key={index}>
+                <span aria-label={tag} title={tag} key={index} className="tag">
                   {tag}
                 </span>
               ))}

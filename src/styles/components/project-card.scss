@@ -32,6 +32,9 @@
 
     @include breakpoints.tablet {
       grid-template-columns: 10rem 1fr;
+      grid-template-areas: "logo title"
+                            "logo text"
+                            ". technologies";
       gap: 0 3rem;
     }
 
@@ -41,6 +44,7 @@
   }
 
   &__image {
+    grid-area: logo;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +71,7 @@
   &__info {}
 
   &__title {
+    grid-area: title;
     font-size: 3.2rem;
     font-weight: 700;
 
@@ -76,6 +81,7 @@
   }
 
   &__text {
+    grid-area: text;
     margin-top: 0.5rem;
     color: variables.$text-secondary;
     font-size: 1.5rem;
@@ -90,6 +96,23 @@
     p {
 
     }
+  }
+
+  &__technologies {
+    grid-area: technologies;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+
+    @include breakpoints.tablet {
+      .work-card__tags {
+        gap: 1.5rem 2rem;
+      }
+    }
+
+    li {}
   }
 
   &__link {

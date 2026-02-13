@@ -13,4 +13,5 @@ export  type TProject = {
   image: string;
   link: string;
   text: string[];
+  technologies: string[];
 };

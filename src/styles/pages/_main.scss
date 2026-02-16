@@ -94,6 +94,14 @@
       font-size: 3rem;
     }
 
+    &--address {
+      display: block;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 2rem;
+      color: variables.$accent;
+    }
+
     &--description {
       margin-top: 1rem;
       font-size: 2rem;

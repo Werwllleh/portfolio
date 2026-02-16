@@ -4,6 +4,8 @@ import WorkCard from "@/components/work-card";
 import ProjectCard from "@/components/project-card";
 import { useEffect, useState, useCallback } from 'react';
 import {TProject, TWork} from "@/types";
+import {ABOUT_INFO, SOCIALS} from "@/content";
+import Link from "next/link";
 
 const navItems = [
   {
@@ -59,7 +61,6 @@ const MainPage = () => {
 
     const obs = new IntersectionObserver(
       (entries) => {
-        // выбираем самый "видимый" блок
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
@@ -85,8 +86,18 @@ const MainPage = () => {
             <div className="page-main__left">
               <div className="page-main__left--top">
                 <div className="page-main__author">
-                  <h1 className="page-main__author--title">Name Surname</h1>
-                  <p className="page-main__author--post">Front End Engineer</p>
+                  <h1 className="page-main__author--title">
+                    <b>{ABOUT_INFO.AUTHOR[0]}</b> {ABOUT_INFO.AUTHOR[1]}
+                  </h1>
+                  <p className="page-main__author--post">{ABOUT_INFO.POST}</p>
+                  <Link
+                    href={ABOUT_INFO.CITY.ADDRESS}
+                    rel="noopener norefferer"
+                    target={"_blank"}
+                    className="page-main__author--address"
+                  >
+                    {ABOUT_INFO.CITY.TITLE}
+                  </Link>
                   <p className="page-main__author--description">
                     I build accessible, pixel-perfect digital experiences for the web.
                   </p>
@@ -111,19 +122,19 @@ const MainPage = () => {
                 </nav>
               </div>
               <div className="page-main__left--bottom">
-                <div className="socials">
-                  <ul className="socials__list">
-                    <li className="socials__item">
-                      <a href="#"><SvgIcon name={"github"}/></a>
-                    </li>
-                    <li className="socials__item">
-                      <a href="#"><SvgIcon name={"instagram"}/></a>
-                    </li>
-                    <li className="socials__item">
-                      <a href="#"><SvgIcon name={"github"}/></a>
-                    </li>
-                  </ul>
-                </div>
+                {SOCIALS.length ? (
+                  <div className="socials">
+                    <ul className="socials__list">
+                      {SOCIALS.map((item, index) => (
+                        <li key={index} className="socials__item">
+                          <Link href={item.LINK} rel="noopener noreferrer" target={"_blank"}>
+                            <SvgIcon name={item.ICON}/>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="page-main__right">

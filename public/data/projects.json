@@ -66,6 +66,21 @@
     "link": "https://master-sip.vercel.app/"
   },
   {
+    "key": "crm",
+    "title": "CRM Mworks",
+    "image": "/images/projects/harwal.svg",
+    "text": [
+      "Сайт для Mworks"
+    ],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript"
+    ],
+    "link": "https://werwllleh.github.io/crm-site/"
+  },
+  {
     "key": "innova",
     "title": "Стоматология Innova Clinic",
     "image": "/images/projects/harwal.svg",

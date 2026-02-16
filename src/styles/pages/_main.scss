@@ -34,9 +34,13 @@
     }
 
     @include breakpoints.semiDesktop {
-      grid-template-columns: auto .85fr;
+      grid-template-columns: auto 1fr;
       justify-content: space-between;
       gap: 0 4rem;
+    }
+
+    @include breakpoints.desktop {
+      grid-template-columns: auto .85fr;
     }
   }
 
@@ -80,35 +84,61 @@
   }
 
   &__author {
+    @include breakpoints.mobile-normal {
+      max-width: 30rem;
+    }
+
+    @include breakpoints.desktop {
+      max-width: 40rem;
+    }
 
     &--title {
       font-weight: 700;
       letter-spacing: -.025em;
-      font-size: 6rem;
+      font-size: 4.2rem;
       line-height: 1;
+
+      @include breakpoints.tablet {
+        font-size: 5rem;
+      }
+
+      @include breakpoints.desktop {
+        font-size: 6rem;
+      }
     }
 
     &--post {
       margin-top: .5rem;
       font-weight: 600;
-      font-size: 3rem;
+      font-size: 2.2rem;
+
+      @include breakpoints.tablet {
+        font-size: 3rem;
+      }
     }
 
     &--address {
       display: block;
       margin-top: 1.5rem;
       font-weight: 600;
-      font-size: 2rem;
+      font-size: 1.6rem;
       color: variables.$accent;
+
+      @include breakpoints.tablet {
+        font-size: 2rem;
+      }
     }
 
     &--description {
       margin-top: 1rem;
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 500;
       line-height: 1.55;
       color: variables.$text-secondary;
-      max-width: 40rem;
+
+      @include breakpoints.tablet {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -169,6 +199,16 @@
 
   &__item {
     a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+
+        svg {
+          transform: scale(1.1);
+        }
+      }
 
       svg {
         width: 3rem;
@@ -182,21 +222,21 @@
 .description {
 
   p {
-    font-size: 3.85vw;
+    font-size: 1.4rem;
     line-height: 1.6;
     color: variables.$grey;
 
     @include breakpoints.tablet {
-      font-size: 2vw;
+      font-size: 1.6rem;
     }
 
     @include breakpoints.semiDesktop {
-      font-size: 1.15vw;
+      font-size: 2rem;
     }
   }
 
   p + p {
-    margin-top: 2vw;
+    margin-top: 2rem;
   }
 }
 
@@ -204,5 +244,23 @@
 
   li + li {
     margin-top: 2vw;
+  }
+}
+
+.projects {
+
+  &__list {
+
+    li {
+
+    }
+
+    & > li + li {
+      margin-top: 1rem;
+
+      @include breakpoints.tablet {
+        margin-top: 2rem;
+      }
+    }
   }
 }

@@ -1,24 +1,22 @@
 [
   {
     "id": 1,
-    "period": "2016 — 2017",
-    "position": "Frontend",
-    "workplace": { "name": "Work1", "link": "#" },
+    "period": "2022 — 2023",
+    "position": "Веб-разработчик",
+    "workplace": { "name": "Bitroid", "link": "https://bitroid.ru/" },
     "text": [
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+      "Первый опыт коммерческой разработки, применяя знания HTML, CSS, Javascript и PHP. В мои обязанности входили: верстка проектов под платформу 1С-Битрикс, верстка лендингов, интеграция шаблонов в CMS, создание инфоблоков, написание активити для облачной и коробочной версии 1С-Битрикс"
     ],
     "tags": ["HTML", "CSS", "Javascript", "PHP"]
   },
   {
     "id": 2,
-    "period": "2016 — 2017",
-    "position": "Frontend",
-    "workplace": { "name": "Work2", "link": "#" },
+    "period": "2023 — 2026",
+    "position": "Веб-разработчик",
+    "workplace": { "name": "Media Works", "link": "https://mworks.ru/" },
     "text": [
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility."
+      "Верстка под лендинги, интернет-магазины Битрикс, почтовые письма. Создание и поддержка бот-чатов. Создание приложений на React, Next. Разработка телеграм ботов."
     ],
-    "tags": ["HTML", "CSS", "Javascript", "React", "Next.js", "Node.js"]
+    "tags": ["HTML", "Pug", "CSS", "Scss", "Javascript", "React", "Next.js", "Node.js", "Gulp"]
   }
 ]

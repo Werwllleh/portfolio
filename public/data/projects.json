@@ -17,7 +17,7 @@
   {
     "key": "vagclub21",
     "title": "Vagclub21",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/vagclub21.svg",
     "text": [
       "Fullstack разработка для сообщества автомобилистов Vagclub21. Серверная часть на node."
     ],
@@ -40,7 +40,7 @@
   {
     "key": "wedding-invitation",
     "title": "Свадебное приглашение",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/wedding-invitation.png",
     "text": [
       "Сайт-пригласительное"
     ],
@@ -53,7 +53,7 @@
   {
     "key": "master-sip",
     "title": "Строительство СИП домов",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/master-sip.svg",
     "text": [
       "Сайт по строительство домов по технологии СИП"
     ],
@@ -68,7 +68,7 @@
   {
     "key": "crm",
     "title": "CRM Mworks",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/crm-mworks.png",
     "text": [
       "Сайт для Mworks"
     ],
@@ -83,7 +83,7 @@
   {
     "key": "innova",
     "title": "Стоматология Innova Clinic",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/innova.svg",
     "text": [
       "Верстка для стоматологии Innova Clinic."
     ],
@@ -98,7 +98,7 @@
   {
     "key": "santey",
     "title": "Логистическая компания Santey",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/santey.svg",
     "text": [
       "Верстка для логистической компании Santey."
     ],
@@ -113,13 +113,15 @@
   {
     "key": "stellar-burgers",
     "title": "Проект Stellar Burgers",
-    "image": "/images/projects/harwal.svg",
+    "image": "/images/projects/stellar-burgers.svg",
     "text": [
       "Проект в рамках обучения на Яндекс Практикум по курсу React-разработчик."
     ],
     "technologies": [
       "React",
       "TypeScript",
+      "Redux Toolkit",
+      "WebSocket",
       "Css"
     ],
     "link": "https://werwllleh.github.io/react-burger/"

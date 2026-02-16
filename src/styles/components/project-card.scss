@@ -27,13 +27,16 @@
 
   &__body {
     display: grid;
-    grid-template-columns: 100%;
-    gap: 1.5rem 0;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem 2rem;
+    grid-template-areas: "logo info"
+                            "logo info"
+                            "technologies technologies";
 
     @include breakpoints.tablet {
       grid-template-columns: 10rem 1fr;
-      grid-template-areas: "logo title"
-                            "logo text"
+      grid-template-areas: "logo info"
+                            "logo info"
                             ". technologies";
       gap: 0 3rem;
     }
@@ -48,8 +51,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15rem;
-    height: 15rem;
+    width: 7rem;
+    height: 7rem;
     background-color: #eaeaea;
     border-radius: variables.$borderRadius10;
     padding: .5rem;
@@ -68,29 +71,38 @@
     }
   }
 
-  &__info {}
+  &__info {
+    grid-area: info;
+  }
 
   &__title {
-    grid-area: title;
-    font-size: 3.2rem;
+    font-size: 2.6rem;
     font-weight: 700;
 
+    @include breakpoints.mobile-normal {
+      font-size: 3rem;
+    }
+
     @include breakpoints.tablet {
+      font-size: 3.4rem;
+    }
+
+    @include breakpoints.semiDesktop {
       font-size: 4.2rem;
     }
   }
 
   &__text {
-    grid-area: text;
     margin-top: 0.5rem;
     color: variables.$text-secondary;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.5;
 
     @include breakpoints.tablet {
       max-width: 38rem;
       margin-top: 1.5rem;
+      font-size: 1.5rem;
     }
 
     p {
@@ -112,7 +124,18 @@
       }
     }
 
-    li {}
+    li {
+      flex: 1 1 auto;
+
+      &:last-child {
+        max-width: 60%;
+      }
+
+      @include breakpoints.mobile-normal {
+        flex: 0 1 auto;
+        max-width: none;
+      }
+    }
   }
 
   &__link {

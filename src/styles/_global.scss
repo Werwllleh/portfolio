@@ -10,11 +10,16 @@
   padding-block: 1rem;
   padding-inline: 3rem;
   border-radius: 2.5rem;
+  font-size: 1.1rem;
   white-space: nowrap;
+  background-color: rgba(#2dd4bf, .85);
+  color: #fff;
 
+  @include breakpoints.desktop {
+    font-size: 1.25rem;
+  }
 
-
-  @media (prefers-color-scheme: dark) {
+  /*@media (prefers-color-scheme: dark) {
     background-color: rgba(45, 212, 191, .1);
     color: rgb(94 234 212);
   }
@@ -22,5 +27,5 @@
   @media (prefers-color-scheme: light) {
     background-color: rgba(#2dd4bf, .85);
     color: #fff;
-  }
+  }*/
 }

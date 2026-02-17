@@ -19,7 +19,7 @@
     "title": "Vagclub21",
     "image": "/images/projects/vagclub21.svg",
     "text": [
-      "Fullstack разработка для сообщества автомобилистов Vagclub21. Серверная часть на node."
+      "Fullstack разработка для сообщества автомобилистов Vagclub21. Серверная часть на Node.js. Проект в разработке, ссылка ведет на dev версию сайта."
     ],
     "technologies": [
       "Next.js",
@@ -35,7 +35,7 @@
       "PostgreSQL",
       "Express"
     ],
-    "link": "https://vagclub21.ru/"
+    "link": "https://qa.vagclub21.ru/"
   },
   {
     "key": "wedding-invitation",

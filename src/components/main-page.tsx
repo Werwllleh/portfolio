@@ -139,11 +139,13 @@ const MainPage = () => {
             </div>
             <div className="page-main__right">
               <section id="about">
+                <h3>Обо мне</h3>
                 <div className="description">
                   {ABOUT_INFO.TEXT}
                 </div>
               </section>
               <section id="experience">
+                <h3>Опыт</h3>
                 {workList && workList.length ?
                   <ul className="work-list">
                     {[...workList].reverse().map((data) => (
@@ -155,6 +157,7 @@ const MainPage = () => {
                  : null}
               </section>
               <section id="projects">
+                <h3>Проекты</h3>
                 <div className="projects">
                   {projectList && projectList.length ? (
                     <ul className="projects__list">

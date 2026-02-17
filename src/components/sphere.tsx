@@ -1,29 +1,43 @@
 'use client';
 
-import { FC, useEffect, useMemo, useRef } from 'react';
+import {FC, useEffect, useMemo, useRef, useState} from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const COUNT = 10000;
-const RADIUS = 6;
+const RADIUS = 16;
 
 function createCircleTexture() {
-  const size = 64;
-  const canvas = document.createElement('canvas');
+  const size = 64; // на мобилках лучше чуть больше
+  const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
 
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, size, size);
 
   const r = size / 2;
+
+  // плавный круг (soft edge) через radial gradient
+  const g = ctx.createRadialGradient(r, r, 0, r, r, r);
+  g.addColorStop(0.0, "rgba(255,255,255,1)");
+  g.addColorStop(0.7, "rgba(255,255,255,1)");
+  g.addColorStop(1.0, "rgba(255,255,255,0)");
+  ctx.fillStyle = g;
+
   ctx.beginPath();
   ctx.arc(r, r, r, 0, Math.PI * 2);
-  ctx.fillStyle = 'white';
   ctx.fill();
 
   const texture = new THREE.CanvasTexture(canvas);
-  texture.needsUpdate = true;
+
+  // важные настройки для мобилок
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+
   return texture;
 }
 
@@ -33,11 +47,14 @@ const SpherePoints: FC = () => {
   const scrollRef = useRef<number>(0);
   const currentPositionsRef = useRef<Float32Array | null>(null);
 
-  const { initialPositions, targetPositions } = useMemo(() => {
-    const initial = new Float32Array(COUNT * 3);
-    const target = new Float32Array(COUNT * 3);
 
-    for (let i = 0; i < COUNT; i++) {
+  const [count, setCount] = useState<number>(10000);
+
+  const { initialPositions, targetPositions } = useMemo(() => {
+    const initial = new Float32Array(count * 3);
+    const target = new Float32Array(count * 3);
+
+    for (let i = 0; i < count; i++) {
       const i3 = i * 3;
 
       // хаос
@@ -46,8 +63,8 @@ const SpherePoints: FC = () => {
       initial[i3 + 2] = (Math.random() - 0.5) * 10;
 
       // сфера (Фибоначчи)
-      const phi = Math.acos(-1 + (2 * i) / COUNT);
-      const theta = Math.sqrt(COUNT * Math.PI) * phi;
+      const phi = Math.acos(-1 + (2 * i) / count);
+      const theta = Math.sqrt(count * Math.PI) * phi;
 
       target[i3] = RADIUS * Math.cos(theta) * Math.sin(phi);
       target[i3 + 1] = RADIUS * Math.sin(theta) * Math.sin(phi);
@@ -55,6 +72,23 @@ const SpherePoints: FC = () => {
     }
 
     return { initialPositions: initial, targetPositions: target };
+  }, []);
+
+  useEffect(() => {
+    const setPointCount = (): void => {
+      const width = window.innerWidth;
+
+      if (width >= 768) {
+        setCount(10000)
+      } else {
+        setCount(8000)
+      }
+    }
+
+    window.addEventListener('resize', setPointCount);
+    setPointCount();
+
+    return () => window.removeEventListener('resize', setPointCount);
   }, []);
 
   useEffect(() => {
@@ -91,7 +125,7 @@ const SpherePoints: FC = () => {
       currentPositionsRef.current.set(pos);
     }
 
-    for (let i = 0; i < COUNT; i++) {
+    for (let i = 0; i < count; i++) {
       const i3 = i * 3;
 
       // Всегда интерполируем между начальным и целевым состоянием
@@ -134,7 +168,7 @@ const SpherePoints: FC = () => {
         <bufferAttribute
           attach="attributes-position"
           array={initialPositions.slice()}
-          count={COUNT}
+          count={count}
           // args={}
           itemSize={3}
         />
@@ -142,10 +176,11 @@ const SpherePoints: FC = () => {
 
       <pointsMaterial
         color={0x9ea1ff}
-        map={circleTexture}
         size={0.02}
         transparent
         opacity={0.8}
+        alphaMap={circleTexture}
+        alphaTest={0.05}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />
@@ -157,6 +192,7 @@ const Sphere: FC = () => (
   <Canvas
     camera={{ position: [0, 0, 6], fov: 75 }}
     gl={{ alpha: true, antialias: true }}
+    dpr={[1, 2]}
     style={{
       position: 'fixed',
       inset: 0,

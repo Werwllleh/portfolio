@@ -6,6 +6,8 @@ import { useEffect, useState, useCallback } from 'react';
 import {TProject, TWork} from "@/types";
 import {ABOUT_INFO, SOCIALS} from "@/content";
 import Link from "next/link";
+import {ymReach} from "@/utils";
+import {YM_METHOD} from "@/consts";
 
 const navItems = [
   {
@@ -37,6 +39,7 @@ const MainPage = () => {
 
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setActiveSection(anchor);
+    ymReach(YM_METHOD.REACH_GOAL, `menu`)
   }, []);
 
   useEffect(() => {
@@ -91,6 +94,7 @@ const MainPage = () => {
                   </h1>
                   <p className="page-main__author--post">{ABOUT_INFO.POST}</p>
                   <Link
+                    onClick={() => ymReach(YM_METHOD.REACH_GOAL, 'address')}
                     href={ABOUT_INFO.CITY.ADDRESS}
                     rel="noopener norefferer"
                     target={"_blank"}
@@ -127,7 +131,12 @@ const MainPage = () => {
                     <ul className="socials__list">
                       {SOCIALS.map((item, index) => (
                         <li key={index} className="socials__item">
-                          <Link href={item.LINK} rel="noopener noreferrer" target={"_blank"}>
+                          <Link
+                            href={item.LINK}
+                            rel="noopener noreferrer"
+                            target={"_blank"}
+                            onClick={() => ymReach(YM_METHOD.REACH_GOAL, `contacts-${item.ID}`)}
+                          >
                             <SvgIcon name={item.ICON}/>
                           </Link>
                         </li>

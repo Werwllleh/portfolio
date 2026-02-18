@@ -15,6 +15,19 @@
     "link": "https://werwllleh.github.io/harwal/"
   },
   {
+    "key": "flexicore",
+    "title": "Flexicore",
+    "image": "/images/projects/flexicore.svg",
+    "text": [],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript"
+    ],
+    "link": "https://layout.mworx.ru/projects/flexicore/site/"
+  },
+  {
     "key": "vagclub21",
     "title": "Vagclub21",
     "image": "/images/projects/vagclub21.svg",

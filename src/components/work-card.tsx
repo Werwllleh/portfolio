@@ -1,5 +1,7 @@
 "use client";
 import React from 'react';
+import {ymReach} from "@/utils";
+import {YM_METHOD} from "@/consts";
 
 interface IWorkCard {
   id: number;
@@ -13,7 +15,12 @@ interface IWorkCard {
 const WorkCard = ({data}: { data: IWorkCard }) => {
   return (
     <div className="work-card">
-      <a href={data.workplace.link} target={"_blank"} rel={"noreferrer noopener"} className="work-card__link"/>
+      <a
+        onClick={() => ymReach(YM_METHOD.REACH_GOAL, `work-${data.workplace.name}`)}
+        href={data.workplace.link}
+        target={"_blank"}
+        rel={"noreferrer noopener"}
+        className="work-card__link"/>
       <div className="work-card__body">
         <div className="work-card__period">
           <span>{data.period}</span>

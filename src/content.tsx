@@ -18,10 +18,12 @@ export const ABOUT_INFO = {
 
 export const SOCIALS = [
   {
+    ID: 'github',
     ICON: 'github',
     LINK: 'https://github.com/Werwllleh'
   },
   {
+    ID: 'telegram',
     ICON: 'telegram',
     LINK: 'https://t.me/all_lllll'
   },

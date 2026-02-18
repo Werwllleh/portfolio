@@ -3,6 +3,8 @@
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import {TProject} from "@/types";
+import {ymReach} from "@/utils";
+import {YM_METHOD} from "@/consts";
 
 const ProjectCard = ({data}: { data: TProject }) => {
 
@@ -45,7 +47,12 @@ const ProjectCard = ({data}: { data: TProject }) => {
         ) : null}
       </div>
       {data?.link ? (
-        <Link href={data?.link} className="project-card__link" target="_blank" rel="noopener noreferrer"/>
+        <Link
+          onClick={() => ymReach(YM_METHOD.REACH_GOAL, `project-${data.title}`)}
+          href={data?.link}
+          className="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"/>
       ) : null}
     </div>
   );

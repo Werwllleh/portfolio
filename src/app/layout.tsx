@@ -1,6 +1,8 @@
 import "@/styles/styles.scss";
 import type {Metadata} from "next";
 import Sphere from "@/components/sphere";
+import {Suspense} from "react";
+import YandexMetrica from "@/components/yandex-metrika";
 
 export const metadata: Metadata = {
   title: "Портфолио",
@@ -14,7 +16,10 @@ export default function RootLayout({children,}: Readonly<{
     <html lang="ru">
     <body>
     <main>
-      {children}
+      <Suspense fallback={null}>
+        {children}
+        <YandexMetrica />
+      </Suspense>
       <Sphere/>
     </main>
     </body>

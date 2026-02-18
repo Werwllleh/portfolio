@@ -1,3 +1,5 @@
+import {YM_METRIKA_ID} from "@/consts";
+
 export const ymReach = (
   method: string,
   target: string,
@@ -5,7 +7,7 @@ export const ymReach = (
 ):void => {
   if (typeof window === "undefined") return;
 
-  const ymId = Number(process.env.NEXT_PUBLIC_YMETRIKA);
+  const ymId = Number(YM_METRIKA_ID);
 
   if (window && window.ym) {
     window.ym(ymId, method, target, options);

@@ -39,7 +39,7 @@ const MainPage = () => {
 
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setActiveSection(anchor);
-    ymReach(YM_METHOD.REACH_GOAL, `menu`)
+    ymReach(YM_METHOD.REACH_GOAL, 'menu')
   }, []);
 
   useEffect(() => {

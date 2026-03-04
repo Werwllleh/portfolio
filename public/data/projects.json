@@ -15,6 +15,21 @@
     "link": "https://werwllleh.github.io/harwal/"
   },
   {
+    "key": "premer-dent",
+    "title": "Премьер Дент",
+    "image": "/images/projects/premer-dent.webp",
+    "text": [
+      "Верстка для стоматологии Премьер Дент"
+    ],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript"
+    ],
+    "link": "https://werwllleh.github.io/premer-dent/"
+  },
+  {
     "key": "flexicore",
     "title": "Flexicore",
     "image": "/images/projects/flexicore.svg",
@@ -81,7 +96,7 @@
   {
     "key": "crm",
     "title": "CRM Mworks",
-    "image": "/images/projects/crm-mworks.png",
+    "image": "/images/projects/crm-mworks.webp",
     "text": [
       "Сайт для Mworks"
     ],

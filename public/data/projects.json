@@ -1,5 +1,28 @@
 [
   {
+    "key": "autonotes",
+    "title": "AutoNotes",
+    "image": "/images/projects/autonotes.png",
+    "text": [
+      "Приложение для ведения расходов по автомобилю. Разработка полностью с помощью Claude Code."
+    ],
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "Vite",
+      "TanStack Query",
+      "TypeScript",
+      "Shadcn/ui",
+      "Zustand",
+      "NestJS",
+      "NodeJS",
+      "Prisma",
+      "PostgreSQL",
+      "Claude Code"
+    ],
+    "link": "https://auto-notes.ru/"
+  },
+  {
     "key": "harwal",
     "title": "Harwal",
     "image": "/images/projects/harwal.svg",

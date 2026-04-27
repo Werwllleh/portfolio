@@ -1,5 +1,21 @@
 [
   {
+    "key": "hik",
+    "title": "HIK",
+    "image": "/images/projects/hik.svg",
+    "text": [
+      "Верстка для мебельного сайта HIK"
+    ],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript",
+      "GSAP"
+    ],
+    "link": "https://werwllleh.github.io/hik/"
+  },
+  {
     "key": "autonotes",
     "title": "AutoNotes",
     "image": "/images/projects/autonotes.png",

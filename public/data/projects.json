@@ -1,19 +1,26 @@
 [
   {
-    "key": "hik",
-    "title": "HIK",
-    "image": "/images/projects/hik.svg",
+    "key": "vagclub21",
+    "title": "Vagclub21",
+    "image": "/images/projects/vagclub21.svg",
     "text": [
-      "Верстка для мебельного сайта HIK"
+      "Fullstack разработка для сообщества автомобилистов Vagclub21. Серверная часть на Node.js."
     ],
     "technologies": [
-      "Gulp",
-      "Pug",
+      "Next.js",
+      "Payload CMS",
       "Scss",
-      "JavaScript",
-      "GSAP"
+      "TanStack Query",
+      "TypeScript",
+      "Ant Design",
+      "Framer Motion",
+      "Swiper",
+      "Node.js",
+      "Sequelize",
+      "PostgreSQL",
+      "Express"
     ],
-    "link": "https://werwllleh.github.io/hik/"
+    "link": "https://vagclub21.ru/?utm_source=resume-aaa.vercel.app&utm_medium=portfolio&utm_campaign=projects"
   },
   {
     "key": "autonotes",
@@ -36,7 +43,51 @@
       "PostgreSQL",
       "Claude Code"
     ],
-    "link": "https://auto-notes.ru/"
+    "link": "https://auto-notes.ru/?utm_source=resume-aaa.vercel.app&utm_medium=portfolio&utm_campaign=projects"
+  },
+  {
+    "key": "master-sip",
+    "title": "Строительство СИП домов",
+    "image": "/images/projects/master-sip.svg",
+    "text": [
+      "Сайт по строительство домов по технологии СИП"
+    ],
+    "technologies": [
+      "Next.js",
+      "Swiper",
+      "Zustand",
+      "Ant Design"
+    ],
+    "link": "https://master-sip.vercel.app/"
+  },
+  {
+    "key": "hik",
+    "title": "HIK",
+    "image": "/images/projects/hik.svg",
+    "text": [
+      "Верстка для мебельного сайта HIK"
+    ],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript",
+      "GSAP"
+    ],
+    "link": "https://werwllleh.github.io/hik/"
+  },
+  {
+    "key": "flexicore",
+    "title": "Flexicore",
+    "image": "/images/projects/flexicore.svg",
+    "text": [],
+    "technologies": [
+      "Gulp",
+      "Pug",
+      "Scss",
+      "JavaScript"
+    ],
+    "link": "https://layout.mworx.ru/projects/flexicore/site/"
   },
   {
     "key": "harwal",
@@ -69,42 +120,6 @@
     "link": "https://werwllleh.github.io/premer-dent/"
   },
   {
-    "key": "flexicore",
-    "title": "Flexicore",
-    "image": "/images/projects/flexicore.svg",
-    "text": [],
-    "technologies": [
-      "Gulp",
-      "Pug",
-      "Scss",
-      "JavaScript"
-    ],
-    "link": "https://layout.mworx.ru/projects/flexicore/site/"
-  },
-  {
-    "key": "vagclub21",
-    "title": "Vagclub21",
-    "image": "/images/projects/vagclub21.svg",
-    "text": [
-      "Fullstack разработка для сообщества автомобилистов Vagclub21. Серверная часть на Node.js. Проект в разработке, ссылка ведет на dev версию сайта."
-    ],
-    "technologies": [
-      "Next.js",
-      "Payload CMS",
-      "Scss",
-      "TanStack Query",
-      "TypeScript",
-      "Ant Design",
-      "Framer Motion",
-      "Swiper",
-      "Node.js",
-      "Sequelize",
-      "PostgreSQL",
-      "Express"
-    ],
-    "link": "https://qa.vagclub21.ru/"
-  },
-  {
     "key": "wedding-invitation",
     "title": "Свадебное приглашение",
     "image": "/images/projects/wedding-invitation.png",
@@ -116,21 +131,6 @@
       "Framer Motion"
     ],
     "link": "https://aa-invitation.vercel.app/"
-  },
-  {
-    "key": "master-sip",
-    "title": "Строительство СИП домов",
-    "image": "/images/projects/master-sip.svg",
-    "text": [
-      "Сайт по строительство домов по технологии СИП"
-    ],
-    "technologies": [
-      "Next.js",
-      "Swiper",
-      "Zustand",
-      "Ant Design"
-    ],
-    "link": "https://master-sip.vercel.app/"
   },
   {
     "key": "crm",

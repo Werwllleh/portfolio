@@ -51,7 +51,7 @@ const YandexMetrica = () => {
         <div>
           <img
             src={`https://mc.yandex.ru/watch/${Number(YM_METRIKA_ID)}`}
-            style={{position: "absolute", left: "-9999px;"}}
+            style={{position: "absolute", left: "-9999px"}}
             alt=""
           />
         </div>

@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: var(--obsidian);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-glass: var(--surface-glass);
+  --color-hairline: var(--hairline);
+  --color-hairline-bright: var(--hairline-bright);
+  --color-lime: var(--lime);
+  --color-lime-glow: var(--lime-glow);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  /* Default: Dark Theme (Obsidian Void) */
+  --obsidian: #090A0C;
+  --surface: #111317;
+  --surface-hover: #181B22;
+  --surface-glass: rgba(17, 19, 23, 0.65);
+  --hairline: #22262E;
+  --hairline-bright: rgba(255, 255, 255, 0.12);
+  --lime: #E2F163;
+  --lime-glow: rgba(226, 241, 99, 0.18);
+  --text-primary: #F2F4F7;
+  --text-muted: #6B7280;
+  --text-dim: #9CA3AF;
+
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  /* Light Theme (Clean Titanium / Paper Minimal) */
+  --obsidian: #F6F8FA;
+  --surface: #FFFFFF;
+  --surface-hover: #F0F3F6;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --hairline: #D0D7DE;
+  --hairline-bright: rgba(0, 0, 0, 0.08);
+  --lime: #3662E3; /* Electric Cobalt Blue accent for light theme */
+  --lime-glow: rgba(54, 98, 227, 0.18);
+  --text-primary: #1F2328;
+  --text-muted: #656D76;
+  --text-dim: #424A53;
+
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Circular Clip-Path Reveal View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+::selection {
+  background-color: var(--lime);
+  color: var(--obsidian);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lime);
+}

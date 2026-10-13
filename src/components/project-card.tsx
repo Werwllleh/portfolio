@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import {TProject} from "@/types";
 import {ymReach} from "@/utils";
 import {YM_METHOD} from "@/consts";
@@ -36,8 +37,11 @@ const ProjectCard = ({data}: { data: TProject }) => {
               <img
                 src={data.image}
                 alt={data.title}
+                width={160}
+                height={80}
                 className="h-full w-full object-contain transition-all duration-300 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -53,13 +57,17 @@ const ProjectCard = ({data}: { data: TProject }) => {
             )}
           </h4>
 
-          {data.text.length > 0 && (
+          {data.description ? (
+            <div className="space-y-2 text-sm leading-relaxed text-text-dim [&>p]:mb-2">
+              <RichText data={data.description} />
+            </div>
+          ) : data.text && data.text.length > 0 ? (
             <div className="space-y-2 text-sm leading-relaxed text-text-dim">
               {data.text.map((t: string, i: number) => (
                 <p key={i}>{t}</p>
               ))}
             </div>
-          )}
+          ) : null}
 
           {technologies.length > 0 && (
             <ul className="flex flex-wrap gap-2 pt-2">

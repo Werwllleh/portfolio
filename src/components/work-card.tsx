@@ -1,18 +1,11 @@
 "use client";
 import React from 'react';
+import { RichText } from '@payloadcms/richtext-lexical/react';
+import { TWork } from '@/types';
 import {ymReach} from "@/utils";
 import {YM_METHOD} from "@/consts";
 
-interface IWorkCard {
-  id: number;
-  period: string;
-  position: string;
-  workplace: { name: string, link: string };
-  text: string[];
-  tags: string[];
-}
-
-const WorkCard = ({data}: { data: IWorkCard }) => {
+const WorkCard = ({data}: { data: TWork }) => {
   return (
     <div className="group relative rounded-2xl border border-hairline/70 bg-surface/40 p-6 md:p-7 backdrop-blur-md transition-all duration-300 hover:border-lime/40 hover:bg-surface/75 hover:shadow-[0_0_35px_rgba(226,241,99,0.05)]">
       <a
@@ -44,11 +37,17 @@ const WorkCard = ({data}: { data: IWorkCard }) => {
             </div>
           </div>
 
-          <div className="space-y-2 text-sm leading-relaxed text-text-dim">
-            {data.text.map((t: string, i: number) => (
-              <p key={i}>{t}</p>
-            ))}
-          </div>
+          {data.description ? (
+            <div className="space-y-2 text-sm leading-relaxed text-text-dim [&>p]:mb-2">
+              <RichText data={data.description} />
+            </div>
+          ) : data.text && data.text.length > 0 ? (
+            <div className="space-y-2 text-sm leading-relaxed text-text-dim">
+              {data.text.map((t: string, i: number) => (
+                <p key={i}>{t}</p>
+              ))}
+            </div>
+          ) : null}
 
           {data.tags && data.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-2">

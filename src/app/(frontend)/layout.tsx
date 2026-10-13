@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type {Metadata} from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Sphere from "@/components/sphere";
+import Sphere from "@/components/sphere-client";
 import {Suspense} from "react";
 import YandexMetrica from "@/components/yandex-metrika";
 import { ThemeProvider } from "@/context/theme-context";
@@ -9,11 +9,13 @@ import { ThemeProvider } from "@/context/theme-context";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

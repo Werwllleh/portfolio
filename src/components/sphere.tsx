@@ -55,8 +55,19 @@ const SpherePoints: FC = () => {
     targetY: 0,
   });
 
-  const [count, setCount] = useState<number>(3500);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
+
+  const [count, setCount] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 768 ? 3000 : 800;
+    }
+    return 3000;
+  });
 
   // Buffer geometry positions and color array (only recomputed on count change)
   const { initialPositions, targetPositions, initialColors } = useMemo(() => {
@@ -115,15 +126,16 @@ const SpherePoints: FC = () => {
   useEffect(() => {
     const setPointCount = (): void => {
       const width = window.innerWidth;
-      setIsMobile(width < 1024);
+      const mobile = width < 1024;
+      setIsMobile(mobile);
       if (width >= 768) {
-        setCount(3500);
+        setCount(3000);
       } else {
-        setCount(1600);
+        setCount(800);
       }
     };
 
-    window.addEventListener('resize', setPointCount);
+    window.addEventListener('resize', setPointCount, { passive: true });
     setPointCount();
 
     return () => window.removeEventListener('resize', setPointCount);
@@ -218,7 +230,7 @@ const SpherePoints: FC = () => {
 
   return (
     <points ref={pointsRef} position={isMobile ? [0, -1.2, -0.5] : [0.8, 0, 0]}>
-      <bufferGeometry>
+      <bufferGeometry key={count}>
         {/* @ts-ignore */}
         <bufferAttribute
           attach="attributes-position"
@@ -252,8 +264,12 @@ const SpherePoints: FC = () => {
 const Sphere: FC = () => (
   <Canvas
     camera={{ position: [0, 0, 6], fov: 75 }}
-    gl={{ alpha: true, antialias: true }}
-    dpr={[1, 2]}
+    gl={{
+      alpha: true,
+      antialias: false,
+      powerPreference: 'low-power',
+    }}
+    dpr={[1, 1.5]}
     style={{
       position: 'fixed',
       inset: 0,

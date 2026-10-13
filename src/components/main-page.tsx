@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import SvgIcon from "@/components/svg-icon";
 import WorkCard from "@/components/work-card";
 import ProjectCard from "@/components/project-card";
 import { useEffect, useState, useCallback } from 'react';
-import {TProject, TWork} from "@/types";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import {TProject, TWork, TSiteSettings} from "@/types";
 import {ABOUT_INFO, SOCIALS} from "@/content";
 import Link from "next/link";
 import {ymReach} from "@/utils";
@@ -28,10 +29,17 @@ const navItems = [
   },
 ]
 
-const MainPage = () => {
+interface MainPageProps {
+  initialSettings?: TSiteSettings | null;
+  initialWorks?: TWork[] | null;
+  initialProjects?: TProject[] | null;
+}
 
-  const [workList, setWorkList] = useState<TWork[]>([]);
-  const [projectList, setProjectList] = useState<TProject[]>([]);
+const MainPage = ({ initialSettings, initialWorks, initialProjects }: MainPageProps) => {
+
+  const [settings] = useState<TSiteSettings | null>(initialSettings || null);
+  const [workList, setWorkList] = useState<TWork[]>(initialWorks || []);
+  const [projectList, setProjectList] = useState<TProject[]>(initialProjects || []);
   const [activeSection, setActiveSection] = useState<string>('about');
 
   const navClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -47,16 +55,18 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    (async () => {
-      const [worksRes, projectsRes] = await Promise.all([
-        fetch('/data/works.json', { cache: 'no-store' }),
-        fetch('/data/projects.json', { cache: 'no-store' }),
-      ]);
+    if (!initialWorks?.length || !initialProjects?.length) {
+      (async () => {
+        const [worksRes, projectsRes] = await Promise.all([
+          fetch('/data/works.json', { cache: 'no-store' }),
+          fetch('/data/projects.json', { cache: 'no-store' }),
+        ]);
 
-      setWorkList(await worksRes.json());
-      setProjectList(await projectsRes.json());
-    })();
-  }, []);
+        if (!initialWorks?.length) setWorkList(await worksRes.json());
+        if (!initialProjects?.length) setProjectList(await projectsRes.json());
+      })();
+    }
+  }, [initialWorks, initialProjects]);
 
   useEffect(() => {
     const ids = ['about', 'experience', 'projects'];
@@ -99,7 +109,7 @@ const MainPage = () => {
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-lime"></span>
                 </span>
                 <span className="font-mono text-xs uppercase tracking-wider text-lime">
-                  AVAILABLE FOR NEW CONTRACTS
+                  {settings?.statusText || "AVAILABLE FOR NEW CONTRACTS"}
                 </span>
               </div>
               <div className="lg:hidden">
@@ -108,26 +118,27 @@ const MainPage = () => {
             </div>
 
             <h1 className="text-5xl font-extrabold tracking-tight text-text-primary sm:text-6xl lg:text-7xl">
-              <span className="text-lime">{ABOUT_INFO.AUTHOR[0]}</span> {ABOUT_INFO.AUTHOR[1]}
+              <span className="text-lime">{settings?.authorFirstName || ABOUT_INFO.AUTHOR[0]}</span>{" "}
+              {settings?.authorLastName || ABOUT_INFO.AUTHOR[1]}
             </h1>
 
             <h2 className="mt-4 text-xl font-medium tracking-tight text-text-primary sm:text-2xl">
-              {ABOUT_INFO.POST}
+              {settings?.postTitle || ABOUT_INFO.POST}
             </h2>
 
             <Link
               onClick={() => ymReach(YM_METHOD.REACH_GOAL, 'address')}
-              href={ABOUT_INFO.CITY.ADDRESS}
+              href={settings?.cityAddress || ABOUT_INFO.CITY.ADDRESS}
               rel="noopener noreferrer"
               target="_blank"
               className="mt-3 inline-flex items-center gap-2 font-mono text-sm text-text-muted transition-colors hover:text-lime"
             >
-              <span>📍 {ABOUT_INFO.CITY.TITLE}</span>
+              <span>📍 {settings?.cityTitle || ABOUT_INFO.CITY.TITLE}</span>
               <span className="text-lime text-base">↗</span>
             </Link>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-text-dim sm:text-lg">
-              {ABOUT_INFO.DESCRIPTION}
+              {settings?.description || ABOUT_INFO.DESCRIPTION}
             </p>
 
             {/* Vernier Navigation */}
@@ -174,21 +185,21 @@ const MainPage = () => {
           </div>
 
           {/* Social Links */}
-          {SOCIALS.length > 0 && (
+          {(settings?.socials?.length || SOCIALS.length) > 0 && (
             <div className="mt-12 lg:mt-0">
               <ul className="flex items-center gap-3">
-                {SOCIALS.map((item, index) => (
+                {(settings?.socials || SOCIALS.map(s => ({ id: s.ID, icon: s.ICON, link: s.LINK }))).map((item, index) => (
                   <li key={index}>
                     <Link
-                      href={item.LINK}
+                      href={item.link}
                       rel="noopener noreferrer"
                       target="_blank"
-                      onClick={() => ymReach(YM_METHOD.REACH_GOAL, `contacts-${item.ID}`)}
+                      onClick={() => ymReach(YM_METHOD.REACH_GOAL, `contacts-${item.id}`)}
                       className="group flex h-11 w-11 items-center justify-center rounded-xl border border-hairline/80 bg-surface/50 text-text-muted backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-lime/50 hover:bg-surface hover:text-lime hover:shadow-[0_0_20px_rgba(226,241,99,0.15)]"
-                      aria-label={item.ID}
+                      aria-label={item.id}
                     >
                       <span className="h-5 w-5 transition-transform group-hover:scale-110">
-                        <SvgIcon name={item.ICON} />
+                        <SvgIcon name={item.icon} />
                       </span>
                     </Link>
                   </li>
@@ -216,8 +227,12 @@ const MainPage = () => {
               <span>01 // Обо мне</span>
               <span className="h-px flex-1 bg-hairline/60"></span>
             </div>
-            <div className="rounded-2xl border border-hairline/70 bg-surface/40 p-6 md:p-7 backdrop-blur-md space-y-4 text-sm leading-relaxed text-text-dim sm:text-base transition-all duration-300 hover:border-lime/30 hover:bg-surface/60">
-              {ABOUT_INFO.TEXT}
+            <div className="rounded-2xl border border-hairline/70 bg-surface/40 p-6 md:p-7 backdrop-blur-md space-y-4 text-sm leading-relaxed text-text-dim sm:text-base transition-all duration-300 hover:border-lime/30 hover:bg-surface/60 [&>p]:mb-3">
+              {settings?.about ? (
+                <RichText data={settings.about} />
+              ) : (
+                ABOUT_INFO.TEXT
+              )}
             </div>
           </section>
 
@@ -234,7 +249,7 @@ const MainPage = () => {
             </div>
             {workList && workList.length > 0 && (
               <ul className="space-y-6">
-                {[...workList].reverse().map((data) => (
+                {workList.map((data) => (
                   <li key={data.id}>
                     <WorkCard data={data} />
                   </li>

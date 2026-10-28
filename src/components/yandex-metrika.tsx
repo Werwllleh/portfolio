@@ -1,63 +1,29 @@
-"use client"
+"use client";
 
-import React, {useEffect} from 'react';
-import {usePathname, useSearchParams} from "next/navigation";
-import Script from "next/script";
-import {YM_METHOD, YM_METRIKA_ID} from "@/consts";
-import {ymReach} from "@/utils";
-
-
-const base = "https://resume-aaa.vercel.app";
+import { useEffect, useRef } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { YM_METHOD } from "@/consts";
+import { ymReach } from "@/utils";
 
 const YandexMetrica = () => {
-
   const pathName = usePathname();
   const searchParams = useSearchParams();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-
-    if (typeof window !== "undefined" && window.ym) {
-      const params = searchParams.toString();
-      const url = base + pathName + (params ? "?" + params : "");
-      ymReach(YM_METHOD.HIT, url);
+    // Initial page load is handled automatically by ym("init") in layout.tsx.
+    // Subsequent client-side route/search param changes trigger a hit.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
     }
 
+    const params = searchParams ? searchParams.toString() : "";
+    const url = `${pathName}${params ? `?${params}` : ""}`;
+    ymReach(YM_METHOD.HIT, url);
   }, [pathName, searchParams]);
 
-  return (
-    <>
-      <Script id="yandex-metrika" strategy="lazyOnload">
-        {`
-            (function(m,e,t,r,i,k,a){
-              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) { return; }
-              }
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],
-              k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    
-            ym(${Number(YM_METRIKA_ID)}, "init", {
-              defer: true,
-              clickmap:true,
-              webvisor: true,
-              trackLinks:true,
-              accurateTrackBounce:true
-            });
-          `}
-      </Script>
-      <noscript>
-        <div>
-          <img
-            src={`https://mc.yandex.ru/watch/${Number(YM_METRIKA_ID)}`}
-            style={{position: "absolute", left: "-9999px"}}
-            alt=""
-          />
-        </div>
-      </noscript>
-    </>
-  );
+  return null;
 };
 
 export default YandexMetrica;

@@ -3,8 +3,10 @@ import type {Metadata} from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sphere from "@/components/sphere-client";
 import {Suspense} from "react";
+import Script from "next/script";
 import YandexMetrica from "@/components/yandex-metrika";
 import { ThemeProvider } from "@/context/theme-context";
+import { YM_METRIKA_ID } from "@/consts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +34,7 @@ export default function RootLayout({children,}: Readonly<{
   return (
     <html lang="ru" className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`} suppressHydrationWarning>
       <head>
+        <meta name="yandex-verification" content="f8956d973beb8b20" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -57,6 +60,35 @@ export default function RootLayout({children,}: Readonly<{
             <Sphere/>
           </main>
         </ThemeProvider>
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`
+            (function(m,e,t,r,i,k,a){
+              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) { return; }
+              }
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],
+              k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(${Number(YM_METRIKA_ID)}, "init", {
+              clickmap: true,
+              webvisor: true,
+              trackLinks: true,
+              accurateTrackBounce: true
+            });
+          `}
+        </Script>
+        <noscript>
+          <div>
+            <img
+              src={`https://mc.yandex.ru/watch/${Number(YM_METRIKA_ID)}`}
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
       </body>
     </html>
   );
